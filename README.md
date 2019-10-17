@@ -2,6 +2,8 @@
 ---
 React tree transfer Component with antd
 
+Fork from https://github.com/glud123/tree-transfer (last updated at 9 May 2018)
+
 ### Install
 ```
 npm i tree-transfer -S
