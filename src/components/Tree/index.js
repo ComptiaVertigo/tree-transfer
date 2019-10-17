@@ -45,8 +45,7 @@ class SearchTree extends React.Component {
 		} else {
 			expandedKeys = this.props.dataList
 				.map((item) => {
-					const titleText = `${item.key} ${item.title}`;
-					console.log(titleText.indexOf(value) > -1);
+					const titleText = `${item.title}`;
 					if (titleText.indexOf(value) > -1) {
 						return getParentKey(item.key, this.props.data);
 					}
@@ -65,7 +64,7 @@ class SearchTree extends React.Component {
 		let { onSelect,showSearch,placeholder,selectedKeys } = this.props;
 		const loop = (data) =>
 			data.map((item) => {
-				const titleText = `${item.key} ${item.title}`;
+				const titleText = `${item.title}`;
 				const index = titleText.indexOf(searchValue);
 				const beforeStr = titleText.substr(0, index);
 				const afterStr = titleText.substr(index + searchValue.length);

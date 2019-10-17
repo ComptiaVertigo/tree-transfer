@@ -52,7 +52,8 @@ class Middleware extends Component {
 			transferBtns,
 			setTransferBtns,
 			setPlaceholder,
-			placeholder
+			placeholder,
+			onChange,
 		} = propsData;
 		leftTreeData = leftTreeData ? leftTreeData : [];
 		rightTreeData = rightTreeData ? rightTreeData : [];
@@ -119,8 +120,14 @@ class Middleware extends Component {
 		}
 	}
 
+	onChange() {
+		if(this.props.onChange) {
+			this.props.onChange(this.getAllTreeData);
+		}
+	}
+
 	render() {
-		return <Transfer / > ;
+		return <Transfer onChange={this.onChange} /> ;
 	}
 }
 Middleware.propTypes = {
@@ -145,7 +152,8 @@ Middleware.propTypes = {
 	treeHeight: PropTypes.number,
 	showSearch: PropTypes.bool,
 	transferBtns: PropTypes.array,
-	placeholder: PropTypes.string
+	placeholder: PropTypes.string,
+	onChange: PropTypes.func,
 };
 export default connect((state) => ({
 	leftTreeArray: state.TreeTransferData.leftTreeArray,

@@ -44,7 +44,8 @@ class Transfer extends Component {
 			setRightTreeData,
 			setLeftTreeData,
 			setRightTreeArray,
-			setLeftTreeArray
+			setLeftTreeArray,
+            onChange,
 		} = this.props;
 		let nodes;
 		switch (key) {
@@ -56,6 +57,7 @@ class Transfer extends Component {
 				setLeftTreeData([]);
 				setRightTreeArray(allTreeArray);
 				setLeftTreeArray([]);
+				onChange();
 				break;
 			case 'toRight':
 				if(leftSelectedKey.length === 0){
@@ -71,6 +73,7 @@ class Transfer extends Component {
 				setLeftTreeArray(toRightArray.newArray);
 				setLeftTreeData(MakeTreeData(toRightArray.newArray));
 				this.props.setLeftSelectedKey([]);
+                onChange();
 				break;
 			case 'tolLeft':
 				if(rightSelectedKey.length === 0){
@@ -86,6 +89,7 @@ class Transfer extends Component {
 				setRightTreeArray(toLeftArray.newArray);
 				setRightTreeData(MakeTreeData(toLeftArray.newArray));
 				this.props.setRightSelectedKey([]);
+                onChange();
 				break;
 			case 'allToLeft':
 				this.setState({
@@ -95,6 +99,7 @@ class Transfer extends Component {
 				setLeftTreeData(MakeTreeData(allTreeArray));
 				setRightTreeArray([]);
 				setLeftTreeArray(allTreeArray);
+                onChange();
 				break;
 			default:
 				break;
@@ -126,14 +131,12 @@ class Transfer extends Component {
 		switch (key) {
 			case 'left':
 				return (selectedKeys, e) => {
-					console.log(selectedKeys);
 					this.props.setLeftSelectedKey(selectedKeys);
 					// transTreeData(selectedKeys);
 				};
 				break;
 			case 'right':
 				return (selectedKeys, e) => {
-					console.log(selectedKeys);
 					this.props.setRightSelectedKey(selectedKeys);
 					// transTreeData(selectedKeys);
 				};
@@ -194,6 +197,7 @@ Transfer.propTypes = {
 	treeHeight:PropTypes.number.isRequired,
 	showSearch:PropTypes.bool.isRequired,
 	transferBtns:PropTypes.array.isRequired,
+    onChange: PropTypes.func.isRequired,
 };
 export default connect(
 	(state) => ({
