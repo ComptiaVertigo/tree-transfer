@@ -1,11 +1,12 @@
 {
   "name": "@omegasoft/tree-transfer-list",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "description": "react antd tree transfer (tree to tree)",
   "main": "index.js",
   "style": "style.css",
   "files": [
-    "lib", "index.d.ts"
+    "lib",
+    "index.d.ts"
   ],
   "publishConfig": {
     "access": "public"
