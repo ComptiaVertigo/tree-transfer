@@ -57,7 +57,7 @@ class Transfer extends Component {
 				setLeftTreeData([]);
 				setRightTreeArray(allTreeArray);
 				setLeftTreeArray([]);
-				onChange();
+				onChange({leftTreeData: [], rightTreeData: allTreeArray});
 				break;
 			case 'toRight':
 				if(leftSelectedKey.length === 0){
@@ -73,7 +73,7 @@ class Transfer extends Component {
 				setLeftTreeArray(toRightArray.newArray);
 				setLeftTreeData(MakeTreeData(toRightArray.newArray));
 				this.props.setLeftSelectedKey([]);
-                onChange();
+                onChange({leftTreeData: toRightArray.newArray, rightTreeData: nodes});
 				break;
 			case 'tolLeft':
 				if(rightSelectedKey.length === 0){
@@ -89,7 +89,7 @@ class Transfer extends Component {
 				setRightTreeArray(toLeftArray.newArray);
 				setRightTreeData(MakeTreeData(toLeftArray.newArray));
 				this.props.setRightSelectedKey([]);
-                onChange();
+                onChange({leftTreeData: nodes, rightTreeData: toLeftArray.newArray});
 				break;
 			case 'allToLeft':
 				this.setState({
@@ -99,7 +99,7 @@ class Transfer extends Component {
 				setLeftTreeData(MakeTreeData(allTreeArray));
 				setRightTreeArray([]);
 				setLeftTreeArray(allTreeArray);
-                onChange();
+                onChange({leftTreeData: allTreeArray, rightTreeData: []});
 				break;
 			default:
 				break;

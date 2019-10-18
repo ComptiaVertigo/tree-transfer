@@ -87,7 +87,8 @@ class Middleware extends Component {
 		setPlaceholder(placeholder ? placeholder : '');
 		setLeftTreeData(MakeTreeData(leftTreeArray));
 		setRightTreeData(MakeTreeData(rightTreeArray));
-	}
+	};
+
 	updateTreeArray = (propsData)=>{
 		let {leftTreeData,
 			rightTreeData,
@@ -97,37 +98,35 @@ class Middleware extends Component {
 		setAllTreeArray(leftTreeData.concat(rightTreeData));
 		setLeftTreeArray(leftTreeData);
 		setRightTreeArray(rightTreeData);
-	}
+	};
+
 	componentWillMount() {
 		this.updateTreeArray(this.props);
 		this.updateProps(this.props);
 	}
+
 	componentWillReceiveProps(nextProps){
 		if(this.props.leftTreeData.length !== nextProps.leftTreeData.length){
 			this.updateTreeArray(nextProps);
 		}
 		this.updateProps(nextProps);
 	}
+
 	getAllTreeData = () => {
 		return {
-			leftTreeNewData: this.props.leftTreeArray,
-			rightTreeNewData: this.props.rightTreeArray
+			leftTreeData: this.props.leftTreeArray,
+			rightTreeData: this.props.rightTreeArray
 		}
 	}
+
 	componentDidMount() {
 		if (this.props.getAllTreeData) {
 			this.props.getAllTreeData(this.getAllTreeData);
 		}
 	}
 
-	onChange() {
-		if(this.props.onChange) {
-			this.props.onChange(this.getAllTreeData);
-		}
-	}
-
 	render() {
-		return <Transfer onChange={this.onChange} /> ;
+		return <Transfer onChange={this.props.onChange} /> ;
 	}
 }
 Middleware.propTypes = {
@@ -153,7 +152,7 @@ Middleware.propTypes = {
 	showSearch: PropTypes.bool,
 	transferBtns: PropTypes.array,
 	placeholder: PropTypes.string,
-	onChange: PropTypes.func,
+	onChange: PropTypes.func.isRequired,
 };
 export default connect((state) => ({
 	leftTreeArray: state.TreeTransferData.leftTreeArray,

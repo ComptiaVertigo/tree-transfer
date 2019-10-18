@@ -13,7 +13,6 @@ module.exports = {
 	 * production 生产模式
 	 * development 开发模式
 	 */
-	mode: 'production',
 	context: path.resolve(pubPath, 'src'),
 	entry: './index.js',
 	output: {

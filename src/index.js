@@ -9,10 +9,16 @@ class TreeTransfer extends Component {
 		super(props);
 	}
 
+	onChange = (data) => {
+		if (this.props.onChange) {
+			this.props.onChange(data);
+		}
+	};
+
 	render() {
 		return (
 			<Provider store={Store}>
-				<Middleware {...this.props} />
+				<Middleware {...this.props} onChange={this.onChange} />
 			</Provider>
 		);
 	}
