@@ -1,4 +1,4 @@
-declare module "tree-transfer-list" {
+declare module "@omegasoft/tree-transfer-list" {
     import * as React from "react";
 
     export interface ITreeTransferListProps {

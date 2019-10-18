@@ -57,7 +57,7 @@ export const toStorybook = () => (
           rightTreeData={rightTree}
           leftTitle={"左树"}
           rightTitle={"右树"}
-          onChange={(data) => console.log("render", data)}
+          onChange={(data) => console.log("onChange", data)}
       />
       <button onClick={() => {console.log(getAllTreeData())}}>get data</button>
     </div>
