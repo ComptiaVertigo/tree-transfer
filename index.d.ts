@@ -1,5 +1,5 @@
 declare module "@omegasoft/tree-transfer-list" {
-    import * as React from "react";
+    import { Component } from "react";
 
     export interface ITreeTransferListProps {
         leftTreeData: ITreeTransferListItem[];
@@ -12,10 +12,12 @@ declare module "@omegasoft/tree-transfer-list" {
         transferBtns?: ITreeTransferListBtns[];
         placeholder?: string;
 
-        onChange?(): IAllTreeTransferListData;
+        onChange?(data: IAllTreeTransferListData): void;
 
         getAllTreeData(): IAllTreeTransferListData;
     }
+
+    export function getAllTreeData(): IAllTreeTransferListData;
 
     export interface ITreeTransferListItem {
         key?: string;
@@ -34,5 +36,5 @@ declare module "@omegasoft/tree-transfer-list" {
         className?: string;
     }
 
-    export class TreeTransferList extends React.Component<ITreeTransferListProps> {}
+    export class TreeTransfer extends Component<ITreeTransferListProps> {}
 }
