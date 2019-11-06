@@ -85,6 +85,9 @@ ReactDOM.render(<App />,document.querySelector('#app'));
 |rightTreeData|右侧树数据源|array|[]|
 |getAllTreeData|获取所有树数据|object,{leftTreeNewData:[],rightTreeNewData:[]}|——|
 |transferBtns|穿梭按钮定义|array,具体配置见 **穿梭按钮定制**|——|
+|onChange|func|——|
+|className|string|——|
+|disabled|boolean|——|
 
 ### 穿梭按钮定制
 ```javaScript

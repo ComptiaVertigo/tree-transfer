@@ -11,6 +11,8 @@ declare module "@omegasoft/tree-transfer-list" {
         showSearch?: boolean;
         transferBtns?: ITreeTransferListBtns[];
         placeholder?: string;
+        className?: string;
+        disabled?: boolean;
 
         onChange?(data: IAllTreeTransferListData): void;
 
