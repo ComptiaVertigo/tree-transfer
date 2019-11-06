@@ -16,9 +16,10 @@ class TreeTransfer extends Component {
 	};
 
 	render() {
+		const {disabled = false, className = ""} = this.props;
 		return (
 			<Provider store={Store}>
-				<Middleware {...this.props} onChange={this.onChange} />
+				<Middleware {...this.props} onChange={this.onChange} disabled={disabled} className={className}/>
 			</Provider>
 		);
 	}
@@ -35,5 +36,7 @@ TreeTransfer.propTypes = {
 	transferBtns:PropTypes.array,
 	placeholder:PropTypes.string,
 	onChange:PropTypes.func,
+	disabled:PropTypes.bool,
+	className:PropTypes.string,
 };
 export default {TreeTransfer,getAllTreeData};
