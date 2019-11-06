@@ -150,7 +150,7 @@ class Transfer extends Component {
 		let {leftTitle,rightTitle,leftSelectedKey,rightSelectedKey,leftTreeData,rightTreeData,leftTreeArray,rightTreeArray,treeWidth,treeHeight,showSearch,transferBtns, className, disabled} = this.props;
 		return (
 			<div className={`tree-transfer ${className}`} style={{"height":treeHeight}} data-disabled={disabled}>
-				<div className = "tree-transfer-container" style={{"width":treeWidth}} >
+				<div className = "tree-transfer-container tree-transfer__left" style={{"width":treeWidth}} >
 					{leftTitle.length>0?<div className='tree-title'>{leftTitle}</div>:null}
 					<Tree
 					style ={{"height":`${leftTitle.length>0?'calc(100% - 34px)':'100%'}`,"paddingTop":`${showSearch?'45px':'0px'}`}}
@@ -163,7 +163,7 @@ class Transfer extends Component {
 				<div className = "tree-transfer-middle" >
 					{this.createBtns(transferBtns)} 
 				</div> 
-				<div className = "tree-transfer-container" style={{"width":treeWidth}}>
+				<div className = "tree-transfer-container tree-transfer__right" style={{"width":treeWidth}}>
 					{rightTitle.length>0?<div className='tree-title'>{rightTitle}</div>:null}
 					<Tree 
 					style ={{"height":`${rightTitle.length>0?'calc(100% - 34px)':'100%'}`,"paddingTop":`${showSearch?'45px':'0px'}`}}
