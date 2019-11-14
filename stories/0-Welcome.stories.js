@@ -37,6 +37,107 @@ const Data = [
     "title": "Russia1",
     "parentKey": "Austratia",
   },
+  {
+    "key": "Albania",
+    "title": "Albania",
+    "parentKey": "Austratia",
+  },
+  {
+    "key": "Armenia",
+    "title": "Armenia",
+    "parentKey": "Austratia",
+  },
+  {
+    "key": "Austria",
+    "title": "Austria",
+    "parentKey": "Austratia",
+  },
+  {
+    "key": "Azerbaijan",
+    "title": "Azerbaijan",
+    "parentKey": "Austratia",
+  },
+  {
+    "key": "Belarus",
+    "title": "Belarus",
+    "parentKey": "Austratia",
+  },
+  {
+    "key": "Belgium",
+    "title": "Belgium",
+    "parentKey": "Austratia",
+  },
+  {
+    "key": "Bulgaria",
+    "title": "Bulgaria",
+    "parentKey": "Austratia",
+  },
+  {
+    "key": "Croatia",
+    "title": "Croatia",
+    "parentKey": "Austratia",
+  },
+  {
+    "key": "Cyprus",
+    "title": "Cyprus",
+    "parentKey": "Austratia",
+  },
+  {
+    "key": "Czech Republic",
+    "title": "Czech Republic",
+    "parentKey": "Austratia",
+  },
+  {
+    "key": "Denmark",
+    "title": "Denmark",
+    "parentKey": "Austratia",
+  },
+  {
+    "key": "Estonia",
+    "title": "Estonia",
+    "parentKey": "Austratia",
+  },
+  {
+    "key": "Finland",
+    "title": "Finland",
+    "parentKey": "Austratia",
+  },
+  {
+    "key": "France",
+    "title": "France",
+    "parentKey": "Austratia",
+  },
+  {
+    "key": "Georgia",
+    "title": "Georgia",
+    "parentKey": "Austratia",
+  },
+  {
+    "key": "Germany",
+    "title": "Germany",
+    "parentKey": "Austratia",
+  },
+  {
+    "key": "Greece",
+    "title": "Greece",
+    "parentKey": "Austratia",
+  },
+  {
+    "key": "Hungary",
+    "title": "Hungary",
+    "parentKey": "Austratia",
+  },
+  {
+    "key": "Iceland",
+    "title": "Iceland",
+    "parentKey": "Austratia",
+  },
+  {
+    "key": "Ireland",
+    "title": "Ireland",
+    "parentKey": "Austratia",
+  },
+
 ];
 const leftTree = Data;
 const rightTree = [];
