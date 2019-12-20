@@ -48,11 +48,6 @@ const Data = [
     "parentKey": "Austratia",
   },
   {
-    "key": "Austria",
-    "title": "Austria",
-    "parentKey": "Austratia",
-  },
-  {
     "key": "Azerbaijan",
     "title": "Azerbaijan",
     "parentKey": "Austratia",
