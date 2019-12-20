@@ -1,177 +1,189 @@
 import React, {
-	Component
+    Component
 } from 'react';
 import {
-	connect
+    connect
 } from 'react-redux';
 import PropTypes from 'prop-types';
 import {
-	setLeftTreeArray,
-	setRightTreeArray,
-	setAllTreeArray,
-	setLeftTreeData,
-	setRightTreeData,
-	setLeftTitle,
-	setRightTitle,
-	setTreeWidth,
-	setTreeHeight,
-	setSearchShow,
-	setTransferBtns,
-	setPlaceholder
+    setLeftTreeArray,
+    setRightTreeArray,
+    setAllTreeArray,
+    setLeftTreeData,
+    setRightTreeData,
+    setLeftTitle,
+    setRightTitle,
+    setTreeWidth,
+    setTreeHeight,
+    setSearchShow,
+    setTransferBtns,
+    setPlaceholder
 } from 'Store/action';
 import {
-	MakeTreeData
+    MakeTreeData
 } from 'Util/MakeTreeData';
 import Transfer from 'Components/Transfer';
 
 class Middleware extends Component {
-	constructor(props) {
-		super(props);
-	}
-	updateProps = (propsData)=>{
-		let {
-			leftTreeData,
-			rightTreeData,
-			leftTreeArray,
-			rightTreeArray,
-			setLeftTreeData,
-			setRightTreeData,
-			leftTitle,
-			rightTitle,
-			treeWidth,
-			treeHeight,
-			setAllTreeArray,
-			setLeftTreeArray,
-			setRightTreeArray,
-			setLeftTitle,
-			setRightTitle,
-			setTreeWidth,
-			setTreeHeight,
-			setSearchShow,
-			showSearch,
-			transferBtns,
-			setTransferBtns,
-			setPlaceholder,
-			placeholder,
-			onChange,
-			disabled,
-			className,
-		} = propsData;
-		leftTreeData = leftTreeData ? leftTreeData : [];
-		rightTreeData = rightTreeData ? rightTreeData : [];
-		
-		setLeftTitle(leftTitle ? leftTitle : '');
-		setRightTitle(rightTitle ? rightTitle : '');
-		setTreeWidth(treeWidth ? treeWidth : 250);
-		setTreeHeight(treeHeight ? treeHeight : 400);
-		setSearchShow(showSearch ? true : false);
-		setTransferBtns(transferBtns ? transferBtns : [{
-				key: 'allToRight',
-				name: '>>',
-				className: ''
-			},
-			{
-				key: 'toRight',
-				name: '>',
-				className: ''
-			},
-			{
-				key: 'tolLeft',
-				name: '<',
-				className: ''
-			},
-			{
-				key: 'allToLeft',
-				name: '<<',
-				className: ''
-			}
-		]);
-		setPlaceholder(placeholder ? placeholder : '');
-		setLeftTreeData(MakeTreeData(leftTreeArray));
-		setRightTreeData(MakeTreeData(rightTreeArray));
-	};
+    constructor(props) {
+        super(props);
+    }
 
-	updateTreeArray = (propsData)=>{
-		let {leftTreeData,
-			rightTreeData,
-			setAllTreeArray,
-			setLeftTreeArray,
-			setRightTreeArray} = propsData;
-		setAllTreeArray(leftTreeData.concat(rightTreeData));
-		setLeftTreeArray(leftTreeData);
-		setRightTreeArray(rightTreeData);
-	};
+    updateProps = (propsData) => {
+        let {
+            leftTreeData,
+            rightTreeData,
+            leftTreeArray,
+            rightTreeArray,
+            setLeftTreeData,
+            setRightTreeData,
+            leftTitle,
+            rightTitle,
+            treeWidth,
+            treeHeight,
+            setAllTreeArray,
+            setLeftTreeArray,
+            setRightTreeArray,
+            setLeftTitle,
+            setRightTitle,
+            setTreeWidth,
+            setTreeHeight,
+            setSearchShow,
+            showSearch,
+            transferBtns,
+            setTransferBtns,
+            setPlaceholder,
+            placeholder,
+            onChange,
+            disabled,
+            className,
+        } = propsData;
+        leftTreeData = leftTreeData ? leftTreeData : [];
+        rightTreeData = rightTreeData ? rightTreeData : [];
 
-	componentWillMount() {
-		this.updateTreeArray(this.props);
-		this.updateProps(this.props);
-	}
+        setLeftTitle(leftTitle ? leftTitle : '');
+        setRightTitle(rightTitle ? rightTitle : '');
+        setTreeWidth(treeWidth ? treeWidth : 250);
+        setTreeHeight(treeHeight ? treeHeight : 400);
+        setSearchShow(!!showSearch);
+        setTransferBtns(transferBtns ? transferBtns : [{
+            key: 'allToRight',
+            name: '>>',
+            className: ''
+        },
+            {
+                key: 'toRight',
+                name: '>',
+                className: ''
+            },
+            {
+                key: 'tolLeft',
+                name: '<',
+                className: ''
+            },
+            {
+                key: 'allToLeft',
+                name: '<<',
+                className: ''
+            }
+        ]);
+        setPlaceholder(placeholder ? placeholder : '');
+        setLeftTreeData(MakeTreeData(leftTreeArray));
+        setRightTreeData(MakeTreeData(rightTreeArray));
+    };
 
-	componentWillReceiveProps(nextProps){
-		if(this.props.leftTreeData.length !== nextProps.leftTreeData.length){
-			this.updateTreeArray(nextProps);
-		}
-		this.updateProps(nextProps);
-	}
+    updateTreeArray = (propsData) => {
+        let {
+            leftTreeData,
+            rightTreeData,
+            setAllTreeArray,
+            setLeftTreeArray,
+            setRightTreeArray
+        } = propsData;
+        setAllTreeArray(leftTreeData.concat(rightTreeData));
+        setLeftTreeArray(leftTreeData);
+        setRightTreeArray(rightTreeData);
+    };
 
-	getAllTreeData = () => {
-		return {
-			leftTreeData: this.props.leftTreeArray,
-			rightTreeData: this.props.rightTreeArray
-		}
-	};
+    componentWillMount() {
+        this.updateTreeArray(this.props);
+        this.updateProps(this.props);
+    }
 
-	componentDidMount() {
-		if (this.props.getAllTreeData) {
-			this.props.getAllTreeData(this.getAllTreeData);
-		}
-	}
+    componentWillReceiveProps(nextProps) {
+        if (this.props.leftTreeData.length !== nextProps.leftTreeData.length) {
+            this.updateTreeArray(nextProps);
+        }
+        this.updateProps(nextProps);
+    }
 
-	render() {
-		return <Transfer onChange={this.props.onChange} disabled={this.props.disabled} className={this.props.className}/> ;
-	}
+    getAllTreeData = () => {
+        return {
+            leftTreeData: this.props.leftTreeArray,
+            rightTreeData: this.props.rightTreeArray
+        }
+    };
+
+    componentDidMount() {
+        if (this.props.getAllTreeData) {
+            this.props.getAllTreeData(this.getAllTreeData);
+        }
+    }
+
+    render() {
+        return (
+            <Transfer
+                onChange={this.props.onChange}
+                disabled={this.props.disabled}
+                className={this.props.className}
+                onSelected={this.props.onSelected}
+            />
+        );
+    }
 }
+
 Middleware.propTypes = {
-	leftTreeData: PropTypes.array.isRequired,
-	rightTreeData: PropTypes.array.isRequired,
-	setAllTreeArray: PropTypes.func.isRequired,
-	setLeftTreeArray: PropTypes.func.isRequired,
-	setRightTreeArray: PropTypes.func.isRequired,
-	setLeftTreeData: PropTypes.func.isRequired,
-	setRightTreeData: PropTypes.func.isRequired,
-	leftTitle: PropTypes.string.isRequired,
-	rightTitle: PropTypes.string.isRequired,
-	setLeftTitle: PropTypes.func.isRequired,
-	setRightTitle: PropTypes.func.isRequired,
-	getAllTreeData: PropTypes.func.isRequired,
-	setTreeWidth: PropTypes.func.isRequired,
-	setTreeHeight: PropTypes.func.isRequired,
-	setSearchShow: PropTypes.func.isRequired,
-	setTransferBtns: PropTypes.func.isRequired,
-	setPlaceholder: PropTypes.func.isRequired,
-	treeWidth: PropTypes.number,
-	treeHeight: PropTypes.number,
-	showSearch: PropTypes.bool,
-	transferBtns: PropTypes.array,
-	placeholder: PropTypes.string,
-	onChange: PropTypes.func.isRequired,
-	disabled: PropTypes.bool.isRequired,
-	className: PropTypes.string.isRequired,
+    leftTreeData: PropTypes.array.isRequired,
+    rightTreeData: PropTypes.array.isRequired,
+    setAllTreeArray: PropTypes.func.isRequired,
+    setLeftTreeArray: PropTypes.func.isRequired,
+    setRightTreeArray: PropTypes.func.isRequired,
+    setLeftTreeData: PropTypes.func.isRequired,
+    setRightTreeData: PropTypes.func.isRequired,
+    leftTitle: PropTypes.string.isRequired,
+    rightTitle: PropTypes.string.isRequired,
+    setLeftTitle: PropTypes.func.isRequired,
+    setRightTitle: PropTypes.func.isRequired,
+    getAllTreeData: PropTypes.func.isRequired,
+    setTreeWidth: PropTypes.func.isRequired,
+    setTreeHeight: PropTypes.func.isRequired,
+    setSearchShow: PropTypes.func.isRequired,
+    setTransferBtns: PropTypes.func.isRequired,
+    setPlaceholder: PropTypes.func.isRequired,
+    treeWidth: PropTypes.number,
+    treeHeight: PropTypes.number,
+    showSearch: PropTypes.bool,
+    transferBtns: PropTypes.array,
+    placeholder: PropTypes.string,
+    onChange: PropTypes.func.isRequired,
+    onSelected: PropTypes.func.isRequired,
+    disabled: PropTypes.bool.isRequired,
+    className: PropTypes.string.isRequired,
 };
 export default connect((state) => ({
-	leftTreeArray: state.TreeTransferData.leftTreeArray,
-	rightTreeArray: state.TreeTransferData.rightTreeArray,
+    leftTreeArray: state.TreeTransferData.leftTreeArray,
+    rightTreeArray: state.TreeTransferData.rightTreeArray,
 }), {
-	setAllTreeArray,
-	setLeftTreeArray,
-	setRightTreeArray,
-	setLeftTreeData,
-	setRightTreeData,
-	setLeftTitle,
-	setRightTitle,
-	setTreeWidth,
-	setTreeHeight,
-	setSearchShow,
-	setTransferBtns,
-	setPlaceholder
+    setAllTreeArray,
+    setLeftTreeArray,
+    setRightTreeArray,
+    setLeftTreeData,
+    setRightTreeData,
+    setLeftTitle,
+    setRightTitle,
+    setTreeWidth,
+    setTreeHeight,
+    setSearchShow,
+    setTransferBtns,
+    setPlaceholder
 })(Middleware);

@@ -154,6 +154,7 @@ export const toStorybook = () => (
           leftTitle={"左树"}
           rightTitle={"右树"}
           onChange={(data) => console.log("onChange", data)}
+          onSelected={(selectedKeys) => console.log("onSelected", selectedKeys)}
       />
       <button onClick={() => {console.log(getAllTreeData())}}>get data</button>
     </div>

@@ -2,9 +2,9 @@ import React from 'react';
 import {Input, Tree} from 'antd';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
+
 const TreeNode = Tree.TreeNode;
 const Search = Input.Search;
-
 const dataList = [];
 const getParentKey = (key, tree) => {
     let parentKey;

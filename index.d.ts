@@ -16,13 +16,15 @@ declare module "@omegasoft/tree-transfer-list" {
 
         onChange?(data: IAllTreeTransferListData): void;
 
+        onSelected?(keys: ITreeTransferLisKeys): void;
+
         getAllTreeData(): IAllTreeTransferListData;
     }
 
     export function getAllTreeData(): IAllTreeTransferListData;
 
     export interface ITreeTransferListItem {
-        key?: string;
+        key: string;
         title: string;
         parentKey?: string;
     }
@@ -36,6 +38,11 @@ declare module "@omegasoft/tree-transfer-list" {
         key: "allToRight" | "toRight" | "tolLeft" | "allToLeft";
         name: string;
         className?: string;
+    }
+
+    export interface ITreeTransferLisKeys {
+        leftTree: string[];
+        rightTree: string[];
     }
 
     export class TreeTransfer extends Component<ITreeTransferListProps> {}
