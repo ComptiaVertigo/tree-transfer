@@ -37,22 +37,26 @@ class SearchTree extends React.Component {
             autoExpandParent: false
         });
     };
+
+    expandKeysForSearch = (value?) => {
+        const searchValue = value || this.state.searchValue;
+        if (searchValue === '') {
+            return [];
+        }
+        return this.props.dataList
+            .map((item) => {
+                const titleText = `${item.title.toLowerCase()}`;
+                if (titleText.indexOf(searchValue.toLowerCase()) > -1) {
+                    return getParentKey(item.key, this.props.data);
+                }
+                return null;
+            })
+            .filter((item, i, self) => item && self.indexOf(item) === i);
+    };
+
     onChange = (e) => {
         const value = e.target.value;
-        let expandedKeys;
-        if (value === '') {
-            expandedKeys = [];
-        } else {
-            expandedKeys = this.props.dataList
-                .map((item) => {
-                    const titleText = `${item.title.toLowerCase()}`;
-                    if (titleText.indexOf(value.toLowerCase()) > -1) {
-                        return getParentKey(item.key, this.props.data);
-                    }
-                    return null;
-                })
-                .filter((item, i, self) => item && self.indexOf(item) === i);
-        }
+        const expandedKeys = this.expandKeysForSearch(value);
         this.setState({
             expandedKeys,
             searchValue: value,
@@ -63,8 +67,9 @@ class SearchTree extends React.Component {
     render() {
         const {searchValue, expandedKeys, autoExpandParent} = this.state;
         let {onSelect, showSearch, placeholder, selectedKeys} = this.props;
-        const loop = (data) =>
-            data.map((item) => {
+        const searchExpandedKeys = this.expandKeysForSearch();
+        const loop = (data) => {
+            return data.map((item) => {
                 const titleText = `${item.title}`;
                 const lowercaseTitleText = `${item.title.toLowerCase()}`;
                 const lowercaseSearchValue = searchValue.toLowerCase();
@@ -72,8 +77,12 @@ class SearchTree extends React.Component {
                 const beforeStr = titleText.substr(0, index);
                 const searchStr = titleText.substr(index, searchValue.length);
                 const afterStr = titleText.substr(index + searchValue.length);
+                const isFound = !!(index > -1)
+                const isShow = isFound || searchExpandedKeys.includes(item.key);
+                const foundClassName = isFound ? "found" : "";
+                const showClassName = isShow ? "show" : "hidden";
                 const title =
-                    index > -1 ? (
+                    isFound ? (
                         <span className={`tree-transfer__found-by-search tree-transfer__${item.key}`}>
 							{beforeStr}
                             <span style={{color: '#f50'}}>{searchStr}</span>
@@ -84,13 +93,14 @@ class SearchTree extends React.Component {
                     );
                 if (item.children) {
                     return (
-                        <TreeNode key={item.key} title={title} className={index > -1 ? "show" : "hidden"}>
+                        <TreeNode key={item.key} title={title} className={`${showClassName} ${foundClassName}`}>
                             {loop(item.children)}
                         </TreeNode>
                     );
                 }
-                return <TreeNode key={item.key} title={title} className={index > -1 ? "show" : "hidden"}/>;
+                return <TreeNode key={item.key} title={title} className={`${showClassName} ${foundClassName}`}/>;
             });
+        };
         return (
             <div style={this.props.style} className='tree-container'>
                 {
@@ -107,7 +117,7 @@ class SearchTree extends React.Component {
                         expandedKeys={expandedKeys}
                         autoExpandParent={autoExpandParent}
                     >
-                        {loop(this.props.data)}
+                        {loop(this.props.data, false)}
                     </Tree>
                 </div>
             </div>
