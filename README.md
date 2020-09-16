@@ -72,7 +72,7 @@ ReactDOM.render(<App />,document.querySelector('#app'));
 
 ###
 ```javaScript
-// transferBtns 默认值
+// transferBtns
 [{
 	key: 'allToRight',
 	name: '>>',
@@ -94,8 +94,8 @@ ReactDOM.render(<App />,document.querySelector('#app'));
 	className: ''
 }]
 ```
-|参数|说明|类型|默认值
-|-|-|-|-|
-|key|按钮标识|string|['allToRight -- 全部向右穿梭按钮','toRight -- 向右穿梭按钮','tolLeft -- 向左穿梭按钮','allToLeft -- 全部向左穿梭按钮']|
-|name|穿梭按钮显示名称|string|——|
-|className|穿梭按钮类名|string|——|
+|||
+|-|-|-|
+|key|string|['allToRight','toRight','tolLeft','allToLeft']|
+|name|string|——|
+|className|string|——|
