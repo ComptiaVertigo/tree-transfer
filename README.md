@@ -70,8 +70,6 @@ class App extends Component {
 }
 ReactDOM.render(<App />,document.querySelector('#app'));
 
-###
-```javaScript
 // transferBtns
 [{
 	key: 'allToRight',
@@ -94,8 +92,3 @@ ReactDOM.render(<App />,document.querySelector('#app'));
 	className: ''
 }]
 ```
-|||
-|-|-|-|
-|key|string|['allToRight','toRight','tolLeft','allToLeft']|
-|name|string|——|
-|className|string|——|
