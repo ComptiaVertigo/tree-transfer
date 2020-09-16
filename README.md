@@ -61,9 +61,9 @@ class App extends Component {
 				treeWidth={250}
 				treeHeight={400}
 				getAllTreeData={getAllTreeData} leftTreeData={ leftTree } rightTreeData={ rightTree} 
-				leftTitle={'左树'} 
-				rightTitle={'右树'}/>	
-				<button onClick={this.handleClick}>获取数据</button>
+				leftTitle={'Left'} 
+				rightTitle={'Right'}/>	
+				<button onClick={this.handleClick}>Tree</button>
 			</div>
 		);
 	}
@@ -73,23 +73,22 @@ ReactDOM.render(<App />,document.querySelector('#app'));
 ```
 
 ### API
-|参数|说明|类型|默认值
 |-|-|-|-|
-|showSearch|是否显示搜索框|boolean|false|
-|placeholder|搜索框占位符|string|——|
-|treeWidth|树容器宽度|number|250|
-|treeHeight|树容器高度|number|400|
-|leftTitle|左侧容器标题|string|——|
-|rightTitle|右侧容器标题|string|——|
-|leftTreeData|左侧树数据源|array|[]|
-|rightTreeData|右侧树数据源|array|[]|
-|getAllTreeData|获取所有树数据|object,{leftTreeNewData:[],rightTreeNewData:[]}|——|
-|transferBtns|穿梭按钮定义|array,具体配置见 **穿梭按钮定制**|——|
+|showSearch|boolean|false|
+|placeholder|string|——|
+|treeWidth|number|250|
+|treeHeight|number|400|
+|leftTitle|string|——|
+|rightTitle|string|——|
+|leftTreeData|array|[]|
+|rightTreeData|array|[]|
+|getAllTreeData|object,{leftTreeNewData:[],rightTreeNewData:[]}|——|
+|transferBtns|array|——|
 |onChange|func|——|
 |className|string|——|
 |disabled|boolean|——|
 
-### 穿梭按钮定制
+###
 ```javaScript
 // transferBtns 默认值
 [{
