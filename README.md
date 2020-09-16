@@ -70,24 +70,6 @@ class App extends Component {
 }
 ReactDOM.render(<App />,document.querySelector('#app'));
 
-```
-
-### API
-|-|-|-|-|
-|showSearch|boolean|false|
-|placeholder|string|——|
-|treeWidth|number|250|
-|treeHeight|number|400|
-|leftTitle|string|——|
-|rightTitle|string|——|
-|leftTreeData|array|[]|
-|rightTreeData|array|[]|
-|getAllTreeData|object,{leftTreeNewData:[],rightTreeNewData:[]}|——|
-|transferBtns|array|——|
-|onChange|func|——|
-|className|string|——|
-|disabled|boolean|——|
-
 ###
 ```javaScript
 // transferBtns 默认值
