@@ -14,9 +14,7 @@
   "scripts": {
     "dev": "webpack -w --mode=development --progress --colors --config ./config/build.js",
     "build": "webpack --mode=production --progress --colors --config ./config/build.js",
-    "prepublish": "npm run build",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "prepublish": "npm run build"
   },
   "keywords": [
     "react",
@@ -33,10 +31,6 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@storybook/addon-actions": "^5.2.4",
-    "@storybook/addon-links": "^5.2.4",
-    "@storybook/addons": "^5.2.4",
-    "@storybook/react": "^5.2.4",
     "autoprefixer": "^8.1.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.4",
@@ -67,7 +61,7 @@
     "webpack-dev-server": "^3.1.1"
   },
   "dependencies": {
-    "antd": "^3.4.1",
+    "antd": "^4.6.6",
     "babel-polyfill": "^6.26.0",
     "immutability-helper": "^2.6.6",
     "prop-types": "^15.6.1",
