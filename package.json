@@ -1,6 +1,6 @@
 {
   "name": "@comptiavertigo/tree-transfer-list",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "react antd tree transfer (tree to tree)",
   "main": "lib/index.js",
   "style": "style.css",
