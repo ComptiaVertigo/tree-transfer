@@ -1,4 +1,4 @@
-declare module "@comptiavertigo/tree-transfer-list" {
+declare module "@omegasoft/tree-transfer-list" {
     import { Component } from "react";
 
     export interface ITreeTransferListProps {
