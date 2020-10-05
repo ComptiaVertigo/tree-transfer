@@ -38,7 +38,7 @@ class SearchTree extends React.Component {
         });
     };
 
-    expandKeysForSearch = (value?) => {
+    expandKeysForSearch = (value) => {
         const searchValue = value || this.state.searchValue;
         if (searchValue === '') {
             return [];
