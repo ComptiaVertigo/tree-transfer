@@ -12,7 +12,8 @@ import Tree from 'Components/Tree';
 import {
     MakeTreeData,
     TransTreeData,
-    MergeArrayData
+    MergeArrayData,
+    UniqArrayData,
 } from 'Util/MakeTreeData';
 import {
     setLeftTreeArray,
@@ -51,16 +52,17 @@ class Transfer extends Component {
             onSelected,
         } = this.props;
         let nodes;
+        const uniqAllTreeArray = UniqArrayData(allTreeArray);
         switch (key) {
             case 'allToRight':
                 this.setState({
                     btnType: 'allToRight'
                 });
-                setRightTreeData(MakeTreeData(allTreeArray));
+                setRightTreeData(MakeTreeData(uniqAllTreeArray));
                 setLeftTreeData([]);
-                setRightTreeArray(allTreeArray);
+                setRightTreeArray(uniqAllTreeArray);
                 setLeftTreeArray([]);
-                onChange({leftTreeData: [], rightTreeData: allTreeArray});
+                onChange({leftTreeData: [], rightTreeData: uniqAllTreeArray});
                 break;
             case 'toRight':
                 if (leftSelectedKey.length === 0) {
@@ -100,11 +102,11 @@ class Transfer extends Component {
                 this.setState({
                     btnType: 'allToLeft'
                 });
-                setRightTreeData([]);
-                setLeftTreeData(MakeTreeData(allTreeArray));
+                setRightTreeData({uniqAllTreeArray});
+                setLeftTreeData(MakeTreeData(uniqAllTreeArray));
                 setRightTreeArray([]);
-                setLeftTreeArray(allTreeArray);
-                onChange({leftTreeData: allTreeArray, rightTreeData: []});
+                setLeftTreeArray(uniqAllTreeArray);
+                onChange({leftTreeData: uniqAllTreeArray, rightTreeData: []});
                 break;
             default:
                 break;
