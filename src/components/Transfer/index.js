@@ -102,7 +102,7 @@ class Transfer extends Component {
                 this.setState({
                     btnType: 'allToLeft'
                 });
-                setRightTreeData({uniqAllTreeArray});
+                setRightTreeData([]);
                 setLeftTreeData(MakeTreeData(uniqAllTreeArray));
                 setRightTreeArray([]);
                 setLeftTreeArray(uniqAllTreeArray);
