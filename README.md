@@ -29,7 +29,7 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-React tree transfer Component with antd
+React tree transfer Component with antd<br/>
 Fork from https://github.com/glud123/tree-transfer (last updated at 9 May 2018)
 
 
@@ -47,7 +47,6 @@ To get a local copy up and running follow these simple example steps.
 ### Prerequisites
 
 This is an example of how to list things you need to use the software and how to install them.
-* npm
 ```sh
 npm install npm@latest -g
 ```
